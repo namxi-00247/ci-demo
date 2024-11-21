@@ -10,3 +10,13 @@ jobs:
           echo "todo"
           npm install 
           npm run lint 
+    name: publish 
+    steps: 
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+        npm run lint 
+        npm publish
+  
